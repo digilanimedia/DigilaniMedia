@@ -1,3 +1,5 @@
+"use client";
+
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
 
@@ -8,8 +10,6 @@ type BrandHeadingProps = {
 
 export default function BrandHeading({ level = 1, children }: BrandHeadingProps) {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
-
-  // Wrap the dynamic element with motion()
   const MotionTag = motion(Tag);
 
   return (
