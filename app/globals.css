@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles */
+html,
+body {
+  @apply bg-black text-gray-100 font-sans scroll-smooth;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Brand color accents */
+:root {
+  --brand: #e49400;
+}
+
+/* Links */
+a {
+  @apply text-[var(--brand)] hover:underline;
+}
+
+/* Buttons (default look if not using BrandButton component) */
+button {
+  @apply px-4 py-2 rounded-xl font-semibold;
+  background-color: var(--brand);
+  color: #000;
+  transition: all 0.3s ease;
+}
+button:hover {
+  filter: brightness(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  @apply text-white font-bold;
+}
+
+/* Sections */
+section {
+  @apply relative;
+}
+
+/* Utility for brand-colored text */
+.text-brand {
+  color: var(--brand);
+}
+
+/* Utility for brand-colored background */
+.bg-brand {
+  background-color: var(--brand);
+}
