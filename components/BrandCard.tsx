@@ -1,25 +1,27 @@
-"use client";
-
-import { motion, MotionProps } from "framer-motion";
+// components/BrandCard.tsx
 import React from "react";
+import { motion } from "framer-motion";
 
-type BrandCardProps = {
+interface BrandCardProps {
   title: string;
   excerpt: string;
   link: string;
-  className?: string;
-} & Omit<React.HTMLAttributes<HTMLDivElement>, "onAnimationStart"> & MotionProps;
+}
 
-export function BrandCard({ title, excerpt, link, className = "", ...props }: BrandCardProps) {
+export const BrandCard: React.FC<BrandCardProps> = ({ title, excerpt, link }) => {
   return (
     <motion.div
-      whileHover={{ scale: 1.02 }}
-      className={`bg-neutral-800 rounded-xl p-6 shadow-md ${className}`}
-      {...props}
+      className="bg-neutral-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
+      whileHover={{ y: -5 }}
     >
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <h3 className="text-2xl font-bold mb-2">{title}</h3>
       <p className="text-gray-300 mb-4">{excerpt}</p>
-      <a href={link} className="text-[#e49400] font-semibold">Read More</a>
+      <a
+        href={link}
+        className="text-brand font-semibold hover:underline"
+      >
+        Learn More →
+      </a>
     </motion.div>
   );
-}
+};
