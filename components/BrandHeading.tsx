@@ -1,4 +1,4 @@
-import { motion, MotionProps, TargetAndTransition } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
 import React, { ReactNode } from "react";
 
 type BrandHeadingProps = {
@@ -13,10 +13,7 @@ export const BrandHeading: React.FC<BrandHeadingProps> = ({
   className = "",
   ...motionProps
 }) => {
-  // Dynamically create a heading tag (h1, h2, etc.)
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
-
-  // Wrap the dynamic tag with motion
   const MotionTag = motion(Tag);
 
   return (
