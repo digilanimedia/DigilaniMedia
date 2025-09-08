@@ -1,28 +1,17 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
 import React from "react";
 
 type BrandHeadingProps = {
+  level: 1 | 2 | 3 | 4 | 5 | 6;
   children: React.ReactNode;
-  level?: 1 | 2 | 3 | 4 | 5 | 6;
   className?: string;
-};
+} & Omit<React.HTMLAttributes<HTMLHeadingElement>, "onAnimationStart"> & MotionProps;
 
-export function BrandHeading({
-  children,
-  level = 1,
-  className = "",
-}: BrandHeadingProps) {
+export function BrandHeading({ level, children, className = "", ...props }: BrandHeadingProps) {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  const MotionTag = motion[Tag] as React.FC<React.HTMLAttributes<HTMLHeadingElement> & MotionProps>;
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <Tag className={`font-bold tracking-tight ${className}`}>{children}</Tag>
-    </motion.div>
-  );
+  return <MotionTag className={className} {...props}>{children}</MotionTag>;
 }
