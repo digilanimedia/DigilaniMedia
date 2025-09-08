@@ -1,17 +1,28 @@
-"use client";
+// components/BrandHeading.tsx
+import { motion } from "framer-motion";
+import React, { ReactNode } from "react";
 
-import { motion, MotionProps } from "framer-motion";
-import React from "react";
-
-type BrandHeadingProps = {
-  level: 1 | 2 | 3 | 4 | 5 | 6;
-  children: React.ReactNode;
+interface BrandHeadingProps {
+  children: ReactNode;
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
   className?: string;
-} & Omit<React.HTMLAttributes<HTMLHeadingElement>, "onAnimationStart"> & MotionProps;
-
-export function BrandHeading({ level, children, className = "", ...props }: BrandHeadingProps) {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
-  const MotionTag = motion[Tag] as React.FC<React.HTMLAttributes<HTMLHeadingElement> & MotionProps>;
-
-  return <MotionTag className={className} {...props}>{children}</MotionTag>;
 }
+
+export const BrandHeading: React.FC<BrandHeadingProps> = ({
+  children,
+  level = 1,
+  className = "",
+}) => {
+  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+
+  return (
+    <motion[Tag]
+      className={className}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      {children}
+    </motion[Tag]>
+  );
+};
