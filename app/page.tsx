@@ -1,62 +1,70 @@
 // app/page.tsx
+import React from "react";
 import { Layout } from "../components/Layout";
 import { BrandHeading } from "../components/BrandHeading";
-import { BrandCard } from "../components/BrandCard";
 import { BrandButton } from "../components/BrandButton";
+import { BrandCard } from "../components/BrandCard";
 import { FeaturedVideoCard } from "../components/FeaturedVideoCard";
 
 export default function HomePage() {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-black text-white py-20">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <BrandHeading level={1} className="text-brand text-5xl font-bold mb-6">
-            Welcome to Digilani Media
-          </BrandHeading>
-          <p className="text-gray-300 text-lg mb-8">
-            We create premium content, marketing campaigns, and consulting services that elevate your brand.
-          </p>
-          <BrandButton className="px-8 py-4 text-black bg-brand rounded-xl font-semibold shadow-lg hover:scale-105 transition-transform">
-            Get Started
-          </BrandButton>
+      <section className="text-center py-20 bg-black">
+        <BrandHeading level={1} className="text-5xl font-bold text-brand mb-4">
+          Welcome to Digilani Media
+        </BrandHeading>
+        <p className="text-gray-300 text-xl mb-8">
+          We craft digital experiences that inspire, educate, and entertain.
+        </p>
+        <BrandButton className="bg-brand text-black px-8 py-4 rounded-xl font-semibold">
+          Get Started
+        </BrandButton>
+      </section>
+
+      {/* Featured Videos */}
+      <section className="py-20 bg-neutral-900">
+        <BrandHeading level={2} className="text-4xl font-bold text-white text-center mb-12">
+          Featured Videos
+        </BrandHeading>
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <FeaturedVideoCard title="Our Latest Project" youtubeId="dQw4w9WgXcQ" />
+          <FeaturedVideoCard title="Behind the Scenes" youtubeId="9bZkp7q19f0" />
         </div>
       </section>
 
-      {/* Services / Brand Cards */}
-      <section className="bg-neutral-900 text-white py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <BrandCard
-              title="Content Creation"
-              excerpt="High-quality videos and media content that tell your story."
-              link="#"
-            />
-            <BrandCard
-              title="Marketing Strategy"
-              excerpt="Customized campaigns that grow your brand online and offline."
-              link="#"
-            />
-            <BrandCard
-              title="Consulting Services"
-              excerpt="Expert advice and insights to scale your business effectively."
-              link="#"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Video */}
-      <section className="bg-black text-white py-20">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <BrandHeading level={2} className="text-4xl font-bold mb-6">
-            Our Latest Campaign
-          </BrandHeading>
-          <FeaturedVideoCard
-            title="Digilani Media in Action"
-            youtubeId="dQw4w9WgXcQ" // replace with your actual video
+      {/* Services / Cards */}
+      <section className="py-20 bg-black">
+        <BrandHeading level={2} className="text-4xl font-bold text-brand text-center mb-12">
+          What We Offer
+        </BrandHeading>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <BrandCard
+            title="Creative Strategy"
+            excerpt="We develop strategies that make your brand unforgettable."
+            link="#"
+          />
+          <BrandCard
+            title="Content Creation"
+            excerpt="High-quality content that tells your story in a compelling way."
+            link="#"
+          />
+          <BrandCard
+            title="Digital Marketing"
+            excerpt="Boost your reach and grow your audience online effectively."
+            link="#"
           />
         </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="text-center py-20 bg-neutral-900">
+        <BrandHeading level={2} className="text-4xl font-bold text-brand mb-6">
+          Ready to Elevate Your Brand?
+        </BrandHeading>
+        <BrandButton className="bg-brand text-black px-8 py-4 rounded-xl font-semibold">
+          Contact Us Today
+        </BrandButton>
       </section>
     </Layout>
   );
