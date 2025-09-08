@@ -1,22 +1,26 @@
-"use client";
+// components/BrandButton.tsx
+import { motion } from "framer-motion";
+import React, { ReactNode } from "react";
 
-import { motion, MotionProps } from "framer-motion";
-import React from "react";
-
-type BrandButtonProps = {
-  children: React.ReactNode;
+interface BrandButtonProps {
+  children: ReactNode;
   className?: string;
-} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onAnimationStart"> & MotionProps;
+  onClick?: () => void;
+}
 
-export function BrandButton({ children, className = "", ...props }: BrandButtonProps) {
+export const BrandButton: React.FC<BrandButtonProps> = ({
+  children,
+  className = "",
+  onClick,
+}) => {
   return (
     <motion.button
+      className={className}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.97 }}
-      className={`bg-[#e49400] text-black font-semibold px-6 py-3 rounded-xl shadow-md transition-all ${className}`}
-      {...props}
+      onClick={onClick}
     >
       {children}
     </motion.button>
   );
-}
+};
